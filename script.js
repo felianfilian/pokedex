@@ -13,8 +13,14 @@ async function loadPokedex() {
 }
 
 function renderPokemonInfo() {
-  document.getElementById("pokeName").innerHTML = currentPokemon["name"];
+  document.getElementById("pokeName").innerHTML = capitalize(
+    currentPokemon["name"]
+  );
   console.log(currentPokemon["sprites"]["other"]["official_artwork"]);
   document.getElementById("pokeImg").src =
     currentPokemon["sprites"]["other"]["official-artwork"]["front_default"];
+}
+
+function capitalize(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
 }
