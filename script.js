@@ -14,4 +14,7 @@ async function loadPokedex() {
 
 function renderPokemonInfo() {
   document.getElementById("pokeName").innerHTML = currentPokemon["name"];
+  console.log(currentPokemon["sprites"]["other"]["official_artwork"]);
+  document.getElementById("pokeImg").src =
+    currentPokemon["sprites"]["other"]["official-artwork"]["front_default"];
 }
