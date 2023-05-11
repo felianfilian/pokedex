@@ -1,0 +1,3 @@
+function loadPokedex() {
+  // code
+}
