@@ -12,6 +12,8 @@ body {
 
 .main-card {
   width: 500px;
+
+  margin: 20px 0;
 }
 
 #pokedex {
@@ -74,7 +76,7 @@ body {
   flex-direction: column;
   align-items: center;
 
-  min-height: 300px;
+  min-height: 500px;
 
   margin-top: -40px;
 

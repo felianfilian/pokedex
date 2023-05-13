@@ -57,5 +57,19 @@ function changeStatTab(index) {
     </ul>
     `;
   }
+  if (index == 2) {
+    content = `
+    <ul class="stat-list">
+      <li class="stat-element">Evolution 1: Undef</li> 
+    </ul>
+    `;
+  }
+  if (index == 3) {
+    content = `
+    <ul class="stat-list">
+      <li class="stat-element">Moves: Fireball</li>
+    </ul>
+    `;
+  }
   document.getElementById("stats-content").innerHTML = content;
 }
