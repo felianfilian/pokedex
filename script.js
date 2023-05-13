@@ -31,8 +31,11 @@ function changeStatTab(index) {
   if (index == 0) {
     content = `
     <ul class="stat-list">
-      <li class="stat-element">Element: Fire</li>
-      <li class="stat-element">Species: Dragon</li>
+      <li class="stat-element">Species: Seed</li>
+      <li class="stat-element">Height: 2'3.6" (0.70 cm)</li>
+      <li class="stat-element">Weight: 15.2 lbs (6.9 kg)</li>
+      <li class="stat-element">Abilities: Overgrow, Chlorophyl</li>
+      <h2>Breeding</h2>
     </ul>
     `;
   }
