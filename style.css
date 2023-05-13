@@ -97,10 +97,33 @@ body {
   justify-content: space-around;
 
   width: 100%;
+
+  padding: 5px 0;
+
+  border-bottom: 1px solid #fb6c6c;
 }
 
 .tab-stat {
   cursor: pointer;
+}
+
+#stats-content {
+  width: 100%;
+}
+
+.stat-list {
+  box-sizing: border-box;
+
+  width: 100%;
+
+  margin: 0;
+  padding: 20px;
+
+  list-style-type: none;
+}
+
+.stat-element {
+  padding: 4px 0;
 }
 
 /* info container end */
