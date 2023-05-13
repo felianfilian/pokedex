@@ -36,14 +36,24 @@ function changeStatTab(index) {
       <li class="stat-element">Weight: 15.2 lbs (6.9 kg)</li>
       <li class="stat-element">Abilities: Overgrow, Chlorophyl</li>
       <h2>Breeding</h2>
+      <li class="stat-element">Gender: male 87.5% female 12.5%</li>
+      <li class="stat-element">Egg Groups: Monster</li>
+      <li class="stat-element">Egg Cycle: Grass</li>
     </ul>
     `;
   }
   if (index == 1) {
     content = `
     <ul class="stat-list">
-      <li class="stat-element">Strength: 12</li>
-      <li class="stat-element">health: 60</li>
+    <li class="stat-element">HP: 45</li>
+      <li class="stat-element">Strength: 60</li>
+      <li class="stat-element">Defense: 48</li>
+      <li class="stat-element">Sp. Attack: 65</li>
+      <li class="stat-element">Sp. Speed: 65</li>
+      <li class="stat-element">Speed: 45</li>
+      <li class="stat-element">Total: 317</li>
+      <h2>Type defenses</h2>
+      <li class="stat-element">the effectiveness of each type on charmander</li>
     </ul>
     `;
   }
