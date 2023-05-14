@@ -8,6 +8,10 @@ body {
   font-size: 20px;
 }
 
+.mb-8 {
+  margin-bottom: 8px;
+}
+
 /* Pokedex Card */
 
 .main-card {
@@ -134,13 +138,32 @@ body {
 
 #pd-poke-list {
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 20px;
+
+  max-width: 900px;
 
   margin: 20px;
 }
 .pd-poke-item {
-  width: 300px;
+  display: flex;
+  justify-content: space-between;
+
+  width: 240px;
   height: 100px;
-  background-color: #fb6c6c;
+
+  padding: 16px;
+
   border-radius: 16px;
+  color: #fff;
+  font-weight: bold;
+}
+
+#pd-poke-img {
+}
+
+#pd-poke-img img {
+  width: 100px;
+  height: auto;
 }
