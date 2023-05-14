@@ -129,3 +129,18 @@ body {
 }
 
 /* info container end */
+
+/* POKEDEX */
+
+#pd-poke-list {
+  display: flex;
+  gap: 20px;
+
+  margin: 20px;
+}
+.pd-poke-item {
+  width: 300px;
+  height: 100px;
+  background-color: #fb6c6c;
+  border-radius: 16px;
+}
