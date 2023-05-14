@@ -2,15 +2,14 @@ let currentPokemon;
 
 function loadPokemon() {
   loadPokedex();
-  changeStatTab(0);
 }
 
 async function loadPokedex() {
   let url = "https://pokeapi.co/api/v2/pokemon/charmander";
   let response = await fetch(url);
   currentPokemon = await response.json();
-  console.log(currentPokemon);
   renderPokemonInfo();
+  changeStatTab(0);
 }
 
 function renderPokemonInfo() {
@@ -20,7 +19,8 @@ function renderPokemonInfo() {
   document.getElementById("poke-element").innerHTML =
     currentPokemon["types"][0]["type"]["name"];
   document.getElementById("poke-index").innerHTML =
-    "#" + currentPokemon["game_indices"][0]["game_index"];
+    "#" +
+    currentPokemon["game_indices"][3]["game_index"].toString().padStart(3, "0");
   document.getElementById("pokeImg").src =
     currentPokemon["sprites"]["other"]["official-artwork"]["front_default"];
 }
@@ -31,17 +31,11 @@ function capitalize(string) {
 
 function changeStatTab(index) {
   let content = "Page not found";
+  console.log(currentPokemon["weight"]);
   if (index == 0) {
     content = `
     <ul class="stat-list">
-      <li class="stat-element">Species: Fire</li>
-      <li class="stat-element">Height: 2'3.6" (0.70 cm)</li>
-      <li class="stat-element">Weight: 15.2 lbs (6.9 kg)</li>
-      <li class="stat-element">Abilities: Overgrow, Chlorophyl</li>
-      <h2>Breeding</h2>
-      <li class="stat-element">Gender: male 87.5% female 12.5%</li>
-      <li class="stat-element">Egg Groups: Monster</li>
-      <li class="stat-element">Egg Cycle: Grass</li>
+      <li class="stat-element">Weight: ${currentPokemon["weight"]} kg</li>
     </ul>
     `;
   }
@@ -69,4 +63,51 @@ function changeStatTab(index) {
     `;
   }
   document.getElementById("stats-content").innerHTML = content;
+}
+
+// POKEDEX
+
+async function loadPokelist() {
+  let url = "https://pokeapi.co/api/v2/pokemon";
+  let response = await fetch(url);
+  currentPokemon = await response.json();
+  renderPokelist();
+}
+
+async function renderPokelist() {
+  for (let i = 1; i < 5; i++) {
+    let url = "https://pokeapi.co/api/v2/pokemon/" + i;
+    let response = await fetch(url);
+    pokeData = await response.json();
+    let pokeName = pokeData["name"];
+    let elements = "";
+    for (let j = 0; j < pokeData["types"].length; j++) {
+      elements += `
+      <div id="poke-element" class="mb-8">
+      ${pokeData["types"][j]["type"]["name"]}
+      </div>
+      `;
+    }
+    document.getElementById("pd-poke-list").innerHTML += `
+    <div class="pd-poke-item" style="background-color: #4fa34d">
+        <div class="pd-poke-info">
+          <div id="pd-poke-name" class="mb-8">${capitalize(pokeName)}</div>
+          <div id="poke-elements">
+            ${elements}
+          </div>
+        </div>
+        <div id="pd-poke-img">
+          <img src="./img/bulbasaur.png" alt="" />
+        </div>
+      </div>
+  `;
+  }
+}
+
+function changeBGColor(type) {
+  if (type == "grass") {
+    return "#4fa34d";
+  } else if (type == "fire") {
+    // color
+  }
 }
