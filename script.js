@@ -75,11 +75,13 @@ async function loadPokelist() {
 }
 
 async function renderPokelist() {
-  for (let i = 1; i < 5; i++) {
+  for (let i = 1; i < 10; i++) {
     let url = "https://pokeapi.co/api/v2/pokemon/" + i;
     let response = await fetch(url);
     pokeData = await response.json();
+
     let pokeName = pokeData["name"];
+    let mainElement = pokeData["types"][0]["type"]["name"];
     let elements = "";
     for (let j = 0; j < pokeData["types"].length; j++) {
       elements += `
@@ -88,8 +90,11 @@ async function renderPokelist() {
       </div>
       `;
     }
+
     document.getElementById("pd-poke-list").innerHTML += `
-    <div class="pd-poke-item" style="background-color: #4fa34d">
+    <div class="pd-poke-item" style="background-color: ${changeBGColor(
+      mainElement
+    )}">
         <div class="pd-poke-info">
           <div id="pd-poke-name" class="mb-8">${capitalize(pokeName)}</div>
           <div id="poke-elements">
@@ -108,6 +113,10 @@ function changeBGColor(type) {
   if (type == "grass") {
     return "#4fa34d";
   } else if (type == "fire") {
-    // color
+    return "#fb6c6c";
+  } else if (type == "water") {
+    return "#617bff";
+  } else {
+    return "#787878";
   }
 }
