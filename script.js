@@ -17,7 +17,10 @@ function renderPokemonInfo() {
   document.getElementById("pokeName").innerHTML = capitalize(
     currentPokemon["name"]
   );
-  console.log(currentPokemon["sprites"]["other"]["official_artwork"]);
+  document.getElementById("poke-element").innerHTML =
+    currentPokemon["types"][0]["type"]["name"];
+  document.getElementById("poke-index").innerHTML =
+    "#" + currentPokemon["game_indices"][0]["game_index"];
   document.getElementById("pokeImg").src =
     currentPokemon["sprites"]["other"]["official-artwork"]["front_default"];
 }
@@ -31,7 +34,7 @@ function changeStatTab(index) {
   if (index == 0) {
     content = `
     <ul class="stat-list">
-      <li class="stat-element">Species: Seed</li>
+      <li class="stat-element">Species: Fire</li>
       <li class="stat-element">Height: 2'3.6" (0.70 cm)</li>
       <li class="stat-element">Weight: 15.2 lbs (6.9 kg)</li>
       <li class="stat-element">Abilities: Overgrow, Chlorophyl</li>
@@ -45,15 +48,9 @@ function changeStatTab(index) {
   if (index == 1) {
     content = `
     <ul class="stat-list">
-    <li class="stat-element">HP: 45</li>
-      <li class="stat-element">Strength: 60</li>
-      <li class="stat-element">Defense: 48</li>
-      <li class="stat-element">Sp. Attack: 65</li>
-      <li class="stat-element">Sp. Speed: 65</li>
-      <li class="stat-element">Speed: 45</li>
-      <li class="stat-element">Total: 317</li>
-      <h2>Type defenses</h2>
-      <li class="stat-element">the effectiveness of each type on charmander</li>
+      <li class="stat-element">HP: ${currentPokemon["stats"][0]["base_stat"]}</li>
+      <li class="stat-element">Attack: ${currentPokemon["stats"][1]["base_stat"]}</li>
+      
     </ul>
     `;
   }
