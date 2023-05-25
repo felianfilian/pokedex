@@ -1,5 +1,27 @@
 let currentPokemon;
 
+// elements colors
+const elementColours = {
+  normal: "#A8A77A",
+  fire: "#EE8130",
+  water: "#6390F0",
+  electric: "#F7D02C",
+  grass: "#7AC74C",
+  ice: "#96D9D6",
+  fighting: "#C22E28",
+  poison: "#A33EA1",
+  ground: "#E2BF65",
+  flying: "#A98FF3",
+  psychic: "#F95587",
+  bug: "#A6B91A",
+  rock: "#B6A136",
+  ghost: "#735797",
+  dragon: "#6F35FC",
+  dark: "#705746",
+  steel: "#B7B7CE",
+  fairy: "#D685AD",
+};
+
 function loadPokemon() {
   loadPokedex();
 }
@@ -112,12 +134,8 @@ async function renderPokelist() {
 }
 
 function changeBGColor(type) {
-  if (type == "grass") {
-    return "#4fa34d";
-  } else if (type == "fire") {
-    return "#fb6c6c";
-  } else if (type == "water") {
-    return "#617bff";
+  if (Object.keys(elementColours).includes(type)) {
+    return elementColours[type];
   } else {
     return "#787878";
   }
