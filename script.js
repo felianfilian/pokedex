@@ -75,7 +75,7 @@ async function loadPokelist() {
 }
 
 async function renderPokelist() {
-  for (let i = 1; i < 10; i++) {
+  for (let i = 1; i < 20; i++) {
     let url = "https://pokeapi.co/api/v2/pokemon/" + i;
     let response = await fetch(url);
     pokeData = await response.json();
