@@ -7,10 +7,44 @@
     <title>Pokedex Main Lists</title>
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body onload="loadPokelist()">
+  <body onload="loadPokemon()">
     <div id="overlay-container" class="d-none" onclick="closeOverlay()">
       <div class="overlay-card">
-        <!-- pokenmon card overlay -->
+        <div class="main-card">
+          <div id="pokedex">
+            <div class="top-nav">
+              <img class="icon" src="./icon/arrow-left.png" alt="" />
+              <img class="icon" src="./icon/heart.png" alt="" />
+            </div>
+            <h1 id="pokeName">
+              <!-- pokemon name -->
+              Pokemon Name
+            </h1>
+            <div class="top-infobar">
+              <div id="poke-elements">
+                <div id="poke-element">Undef</div>
+              </div>
+              <b>
+                <div id="poke-index">#000</div>
+              </b>
+            </div>
+          </div>
+
+          <div class="info-container">
+            <img src="#" alt="" id="pokeImg" />
+            <div class="poke-stats">
+              <span class="tab-stat" onclick="changeStatTab(0)">About</span>
+              <span class="tab-stat" onclick="changeStatTab(1)"
+                >Basic Stats</span
+              >
+              <span class="tab-stat" onclick="changeStatTab(2)">Evolution</span>
+              <span class="tab-stat" onclick="changeStatTab(3)">Moves</span>
+            </div>
+            <div id="stats-content">
+              <!-- stats content -->
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 

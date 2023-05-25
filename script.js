@@ -32,6 +32,7 @@ async function loadPokedex() {
   currentPokemon = await response.json();
   renderPokemonInfo();
   changeStatTab(0);
+  loadPokelist();
 }
 
 function renderPokemonInfo() {
