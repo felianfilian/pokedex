@@ -1,46 +1,79 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pokedex Remake</title>
-    <link rel="icon" href="#" />
+    <title>Pokedex Main Lists</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body onload="loadPokemon()">
-    <div class="main-card">
-      <div id="pokedex">
-        <div class="top-nav">
-          <img class="icon" src="./icon/arrow-left.png" alt="" />
-          <img class="icon" src="./icon/heart.png" alt="" />
-        </div>
-        <h1 id="pokeName">
-          <!-- pokemon name -->
-          Pokemon Name
-        </h1>
-        <div class="top-infobar">
-          <div id="poke-elements">
-            <div id="poke-element">Undef</div>
+    <div id="overlay-container" class="d-none">
+      <div class="overlay-card">
+        <div class="overlay-background" onclick="closeOverlay()"></div>
+        <div class="main-card">
+          <div id="pokedex">
+            <div class="top-nav">
+              <img
+                class="icon"
+                src="./icon/arrow-left.png"
+                alt=""
+                onclick="closeOverlay()"
+              />
+              <img class="icon" src="./icon/heart.png" alt="" />
+            </div>
+            <h1 id="pokeName">
+              <!-- pokemon name -->
+              Pokemon Name
+            </h1>
+            <div class="top-infobar">
+              <div id="poke-elements">
+                <div id="poke-element">Undef</div>
+              </div>
+              <b>
+                <div id="poke-index">#000</div>
+              </b>
+            </div>
           </div>
-          <b>
-            <div id="poke-index">#000</div>
-          </b>
+
+          <div class="info-container">
+            <img src="#" alt="" id="pokeImg" />
+            <div class="poke-stats">
+              <span class="tab-stat" onclick="changeStatTab(0)">About</span>
+              <span class="tab-stat" onclick="changeStatTab(1)"
+                >Basic Stats</span
+              >
+              <span class="tab-stat" onclick="changeStatTab(2)">Evolution</span>
+              <span class="tab-stat" onclick="changeStatTab(3)">Moves</span>
+            </div>
+            <div id="stats-content">
+              <!-- stats content -->
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+
+    <div id="pd-poke-list">
+      <div id="pd-title">
+        <img src="./img/pokeball-120.png" alt="" />
+        <h1>Pokedex</h1>
       </div>
 
-      <div class="info-container">
-        <img src="#" alt="" id="pokeImg" />
-        <div class="poke-stats">
-          <span class="tab-stat" onclick="changeStatTab(0)">About</span>
-          <span class="tab-stat" onclick="changeStatTab(1)">Basic Stats</span>
-          <span class="tab-stat" onclick="changeStatTab(2)">Evolution</span>
-          <span class="tab-stat" onclick="changeStatTab(3)">Moves</span>
+      <!-- List of Pokemon -->
+
+      <!-- <div class="pd-poke-item">
+        <div class="pd-poke-info">
+          <div id="pd-poke-name" class="mb-8">Bulbasaur</div>
+          <div id="poke-elements">
+            <div id="poke-element" class="mb-8">Seed</div>
+            <div id="poke-element" class="mb-8">Undef</div>
+          </div>
         </div>
-        <div id="stats-content">
-          <!-- stats content -->
+        <div id="pd-poke-img">
+          <img src="./img/bulbasaur.png" alt="" />
         </div>
-      </div>
+      </div> -->
     </div>
 
     <script src="script.js"></script>
