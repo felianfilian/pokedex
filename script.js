@@ -94,7 +94,7 @@ async function renderPokelist() {
     document.getElementById("pd-poke-list").innerHTML += `
     <div class="pd-poke-item" style="background-color: ${changeBGColor(
       mainElement
-    )}">
+    )}" onclick="openOverlay()">
         <div class="pd-poke-info">
           <div id="pd-poke-name" class="mb-8">${capitalize(pokeName)}</div>
           <div id="poke-elements">
@@ -102,7 +102,9 @@ async function renderPokelist() {
           </div>
         </div>
         <div id="pd-poke-img">
-          <img src="./img/bulbasaur.png" alt="" />
+          <img src="${
+            pokeData["sprites"]["other"]["official-artwork"]["front_default"]
+          }" alt="" />
         </div>
       </div>
   `;
@@ -119,4 +121,12 @@ function changeBGColor(type) {
   } else {
     return "#787878";
   }
+}
+
+function openOverlay() {
+  document.getElementById("overlay-container").classList.remove("d-none");
+}
+
+function closeOverlay() {
+  document.getElementById("overlay-container").classList.add("d-none");
 }
