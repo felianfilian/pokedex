@@ -149,3 +149,7 @@ function openOverlay() {
 function closeOverlay() {
   document.getElementById("overlay-container").classList.add("d-none");
 }
+
+function switchHeart() {
+  alert("switched");
+}
