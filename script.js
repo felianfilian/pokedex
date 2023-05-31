@@ -151,5 +151,5 @@ function closeOverlay() {
 }
 
 function switchHeart() {
-  alert("switched");
+  document.getElementById("poke-like").src = "./icon/heart-full.png";
 }
