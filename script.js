@@ -150,6 +150,14 @@ function closeOverlay() {
   document.getElementById("overlay-container").classList.add("d-none");
 }
 
+let heart = 0;
+
 function switchHeart() {
-  document.getElementById("poke-like").src = "./icon/heart-full.png";
+  if (heart == 1) {
+    heart = 0;
+    document.getElementById("poke-like").src = "./icon/heart.png";
+  } else {
+    heart = 1;
+    document.getElementById("poke-like").src = "./icon/heart-full.png";
+  }
 }
