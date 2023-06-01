@@ -31,9 +31,10 @@ function loadPokemon() {
 }
 
 async function loadPokedex() {
-  let url = "https://pokeapi.co/api/v2/pokemon/charmander";
-  let response = await fetch(url);
-  currentPokemon = await response.json();
+  // let url = "https://pokeapi.co/api/v2/pokemon/charmander";
+  // let response = await fetch(url);
+  // currentPokemon = await response.json();
+  currentPokemon = await loadPokeAPI(1);
   renderPokemonInfo();
   changeStatTab(0);
   renderPokelist();
