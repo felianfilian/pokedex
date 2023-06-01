@@ -42,7 +42,7 @@ async function loadPokedex() {
 async function loadPokeAPI(index) {
   let url = "https://pokeapi.co/api/v2/pokemon/" + index;
   let response = await fetch(url);
-  return await response.json();
+  return response.json();
 }
 
 // Poke Card
@@ -53,6 +53,18 @@ function openOverlay() {
 
 function closeOverlay() {
   document.getElementById("overlay-container").classList.add("d-none");
+}
+
+let heart = 0;
+
+function switchHeart() {
+  if (heart == 1) {
+    heart = 0;
+    document.getElementById("poke-like").src = "./icon/heart.png";
+  } else {
+    heart = 1;
+    document.getElementById("poke-like").src = "./icon/heart-full.png";
+  }
 }
 
 function renderPokemonInfo() {
@@ -112,11 +124,11 @@ function changeStatTab(index) {
 
 async function renderPokelist() {
   for (let i = 1; i < 20; i++) {
-    let url = "https://pokeapi.co/api/v2/pokemon/" + i;
-    let response = await fetch(url);
-    pokeData = await response.json();
-    // pokeData = loadPokeAPI(i);
-    // console.log(pokeData);
+    // let url = "https://pokeapi.co/api/v2/pokemon/" + i;
+    // let response = await fetch(url);
+    // pokeData = await response.json();
+    pokeData = await loadPokeAPI(i);
+    console.log(pokeData);
 
     let pokeName = pokeData["name"];
     let mainElement = pokeData["types"][0]["type"]["name"];
@@ -154,17 +166,5 @@ function changeBGColor(type) {
     return elementColours[type];
   } else {
     return "#787878";
-  }
-}
-
-let heart = 0;
-
-function switchHeart() {
-  if (heart == 1) {
-    heart = 0;
-    document.getElementById("poke-like").src = "./icon/heart.png";
-  } else {
-    heart = 1;
-    document.getElementById("poke-like").src = "./icon/heart-full.png";
   }
 }
