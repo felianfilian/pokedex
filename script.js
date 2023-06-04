@@ -27,17 +27,14 @@ const elementColours = {
 };
 
 function loadPokemon() {
-  loadPokedex();
+  loadPokedex(1);
+  renderPokelist();
 }
 
-async function loadPokedex() {
-  // let url = "https://pokeapi.co/api/v2/pokemon/charmander";
-  // let response = await fetch(url);
-  // currentPokemon = await response.json();
-  currentPokemon = await loadPokeAPI(1);
+async function loadPokedex(index) {
+  currentPokemon = await loadPokeAPI(index);
   renderPokemonInfo();
   changeStatTab(0);
-  renderPokelist();
 }
 
 async function loadPokeAPI(index) {
@@ -87,7 +84,7 @@ function capitalize(string) {
 
 function changeStatTab(index) {
   let content = "Page not found";
-  console.log(currentPokemon["weight"]);
+
   if (index == 0) {
     content = `
     <ul class="stat-list">
@@ -125,9 +122,6 @@ function changeStatTab(index) {
 
 async function renderPokelist() {
   for (let i = 1; i < 20; i++) {
-    // let url = "https://pokeapi.co/api/v2/pokemon/" + i;
-    // let response = await fetch(url);
-    // pokeData = await response.json();
     pokeData = await loadPokeAPI(i);
     console.log(pokeData);
 
@@ -142,10 +136,15 @@ async function renderPokelist() {
       `;
     }
 
-    document.getElementById("pd-poke-list").innerHTML += `
+    showPokeListCard(i, mainElement, pokeName, elements, pokeData);
+  }
+}
+
+function showPokeListCard(index, mainElement, pokeName, elements, pokeData) {
+  document.getElementById("pd-poke-list").innerHTML += `
     <div class="pd-poke-item" style="background-color: ${changeBGColor(
       mainElement
-    )}" onclick="openOverlay()">
+    )}" onclick="loadPokedex(${index}); openOverlay();">
         <div class="pd-poke-info">
           <div id="pd-poke-name" class="mb-8">${capitalize(pokeName)}</div>
           <div id="poke-elements">
@@ -159,7 +158,6 @@ async function renderPokelist() {
         </div>
       </div>
   `;
-  }
 }
 
 function changeBGColor(type) {
