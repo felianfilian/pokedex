@@ -73,8 +73,9 @@ function renderPokemonInfo(mainElement) {
   document.getElementById("pokeName").innerHTML = capitalize(
     currentPokemon["name"]
   );
-  document.getElementById("poke-element").innerHTML =
-    currentPokemon["types"][0]["type"]["name"];
+  document.getElementById("poke-elements").innerHTML =
+    renderElements(currentPokemon);
+  //currentPokemon["types"][0]["type"]["name"];
   document.getElementById("poke-index").innerHTML =
     "#" +
     currentPokemon["game_indices"][3]["game_index"].toString().padStart(3, "0");
@@ -130,17 +131,22 @@ async function renderPokelist() {
 
     let pokeName = pokeData["name"];
     let mainElement = pokeData["types"][0]["type"]["name"];
-    let elements = "";
-    for (let j = 0; j < pokeData["types"].length; j++) {
-      elements += `
-      <div id="poke-element" class="mb-8">
-      ${pokeData["types"][j]["type"]["name"]}
-      </div>
-      `;
-    }
+    let elements = renderElements(pokeData);
 
     showPokeListCard(i, mainElement, pokeName, elements, pokeData);
   }
+}
+
+function renderElements(pokeData) {
+  let elements = "";
+  for (let j = 0; j < pokeData["types"].length; j++) {
+    elements += `
+    <div id="poke-element" class="mb-8">
+    ${pokeData["types"][j]["type"]["name"]}
+    </div>
+    `;
+  }
+  return elements;
 }
 
 function showPokeListCard(index, mainElement, pokeName, elements, pokeData) {

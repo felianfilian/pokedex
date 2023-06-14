@@ -6,7 +6,7 @@ body {
 
   background-image: url("img/poke-bg01.jpg");
   background-attachment: fixed;
-  background-size: contain;
+  background-size: cover;
   font-family: "Ubuntu", Arial, Helvetica, sans-serif;
   font-size: 20px;
 }
@@ -120,6 +120,11 @@ body {
 .top-infobar {
   display: flex;
   justify-content: space-between;
+}
+
+#poke-elements {
+  display: flex;
+  flex-direction: column;
 }
 
 #poke-element {
