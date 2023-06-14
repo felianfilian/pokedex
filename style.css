@@ -181,6 +181,10 @@ body {
   cursor: pointer;
 }
 
+.tab-stat:hover {
+  text-shadow: 0 0 20px blue;
+}
+
 #stats-content {
   width: 100%;
 }
