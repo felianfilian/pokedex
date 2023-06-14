@@ -27,13 +27,13 @@ const elementColours = {
 };
 
 function loadPokemon() {
-  loadPokedex(1);
+  loadPokedex(1, "grass");
   renderPokelist();
 }
 
-async function loadPokedex(index) {
+async function loadPokedex(index, mainElement) {
   currentPokemon = await loadPokeAPI(index);
-  renderPokemonInfo();
+  renderPokemonInfo(mainElement);
   changeStatTab(0);
 }
 
@@ -53,6 +53,8 @@ function closeOverlay() {
   document.getElementById("overlay-container").classList.add("d-none");
 }
 
+// Heart Favi
+
 let heart = 0;
 
 function switchHeart() {
@@ -65,7 +67,9 @@ function switchHeart() {
   }
 }
 
-function renderPokemonInfo() {
+function renderPokemonInfo(mainElement) {
+  document.getElementById("pokedex").style.backgroundColor =
+    changeBGColor(mainElement);
   document.getElementById("pokeName").innerHTML = capitalize(
     currentPokemon["name"]
   );
@@ -123,7 +127,6 @@ function changeStatTab(index) {
 async function renderPokelist() {
   for (let i = 1; i < 20; i++) {
     pokeData = await loadPokeAPI(i);
-    console.log(pokeData);
 
     let pokeName = pokeData["name"];
     let mainElement = pokeData["types"][0]["type"]["name"];
@@ -144,7 +147,7 @@ function showPokeListCard(index, mainElement, pokeName, elements, pokeData) {
   document.getElementById("pd-poke-list").innerHTML += `
     <div class="pd-poke-item" style="background-color: ${changeBGColor(
       mainElement
-    )}" onclick="loadPokedex(${index}); openOverlay();">
+    )}" onclick="loadPokedex(${index}, '${mainElement}'); openOverlay();">
         <div class="pd-poke-info">
           <div id="pd-poke-name" class="mb-8">${capitalize(pokeName)}</div>
           <div id="poke-elements">
