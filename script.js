@@ -92,18 +92,49 @@ function changeStatTab(index) {
 
   if (index == 0) {
     content = `
-    <ul class="stat-list">
-      <li class="stat-element">Weight: ${currentPokemon["weight"]} kg</li>
-    </ul>
+    <table class="stat-list">
+      <tr>
+        <td class="pr-16">Gewicht</td>
+        <td>${currentPokemon["weight"] / 10} kg</td>
+      </tr>
+      <tr>
+        <td class="pr-16">Größe</td>
+        <td>${currentPokemon["height"] / 10} m</td>
+      </tr>
+    </table>
     `;
   }
   if (index == 1) {
     content = `
-    <ul class="stat-list">
-      <li class="stat-element">HP: ${currentPokemon["stats"][0]["base_stat"]}</li>
-      <li class="stat-element">Attack: ${currentPokemon["stats"][1]["base_stat"]}</li>
-      
-    </ul>
+    <table class="stat-list">
+      <tr class="stat-element">
+        <td class="pr-16">HP:</td>
+        <td class="stat-value">
+          <div>${currentPokemon["stats"][0]["base_stat"]}</div>
+          <div class="stat-bar" style="width: 50px;"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="pr-16">Attacke:</td>
+        <td>${currentPokemon["stats"][1]["base_stat"]}</td>
+      </tr>
+      <tr>
+        <td class="pr-16">Verteidigung:</td>
+        <td>${currentPokemon["stats"][2]["base_stat"]}</td>
+      </tr>
+      <tr>
+        <td class="pr-16">Spezial Attacke:</td>
+        <td>${currentPokemon["stats"][3]["base_stat"]}</td>
+      </tr>
+      <tr>
+        <td class="pr-16">Spezial Verteidigung:</td>
+        <td>${currentPokemon["stats"][4]["base_stat"]}</td>
+      </tr>
+      <tr>
+        <td class="pr-16">Tempo:</td>
+        <td>${currentPokemon["stats"][1]["base_stat"]}</td>
+      </tr>
+    </table>
     `;
   }
   if (index == 2) {

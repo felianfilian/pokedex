@@ -15,6 +15,10 @@ body {
   margin-bottom: 8px;
 }
 
+.pr-16 {
+  padding-right: 16px;
+}
+
 .d-none {
   display: none;
 }
@@ -192,16 +196,29 @@ body {
 .stat-list {
   box-sizing: border-box;
 
-  width: 100%;
-
-  margin: 0;
+  margin: 20px;
   padding: 20px;
 
-  list-style-type: none;
+  border-collapse: collapse;
 }
 
 .stat-element {
   padding: 4px 0;
+}
+
+.stat-value {
+  display: flex;
+  flex-direction: row;
+
+  width: 100%;
+}
+
+.stat-bar {
+  height: 24px;
+
+  margin-left: 10px;
+
+  background-color: rgb(65, 122, 126);
 }
 
 /* info container end */
