@@ -1,5 +1,4 @@
 // loadPokeMon() - onload function
-// loadPokeDex() - OLD function
 // loadPokeAPI(index) - get pokemon data froom API
 
 let currentPokemon;
@@ -70,12 +69,20 @@ function switchHeart() {
 function renderPokemonInfo(mainElement) {
   document.getElementById("pokedex").style.backgroundColor =
     changeBGColor(mainElement);
+  document.querySelector(
+    ".info-container"
+  ).style.border = `2px solid ${changeBGColor(mainElement)}`;
+  document.getElementById("pokeName").innerHTML = capitalize(
+    currentPokemon["name"]
+  );
+  document.querySelector(
+    ".poke-stats"
+  ).style.borderBottom = `1px solid ${changeBGColor(mainElement)}`;
   document.getElementById("pokeName").innerHTML = capitalize(
     currentPokemon["name"]
   );
   document.getElementById("poke-elements").innerHTML =
     renderElements(currentPokemon);
-  //currentPokemon["types"][0]["type"]["name"];
   document.getElementById("poke-index").innerHTML =
     "#" +
     currentPokemon["game_indices"][3]["game_index"].toString().padStart(3, "0");
@@ -107,32 +114,47 @@ function changeStatTab(index) {
   if (index == 1) {
     content = `
     <table class="stat-list">
-      <tr class="stat-element">
+       <tr class="stat-element">
         <td class="pr-16">HP:</td>
-        <td class="stat-value">
-          <div>${currentPokemon["stats"][0]["base_stat"]}</div>
-          <div class="stat-bar" style="width: 50px;"></div>
-        </td>
+        <td class="stat-value">${currentPokemon["stats"][0]["base_stat"]}</td>
+        <td class="stat-bar" style="width: ${
+          (currentPokemon["stats"][0]["base_stat"] / 120) * 200
+        }px;"></td>
       </tr>
       <tr>
         <td class="pr-16">Attacke:</td>
-        <td>${currentPokemon["stats"][1]["base_stat"]}</td>
+        <td class="stat-value">${currentPokemon["stats"][1]["base_stat"]}</td>
+        <td class="stat-bar" style="width: ${
+          (currentPokemon["stats"][1]["base_stat"] / 120) * 200
+        }px;"></td>
       </tr>
       <tr>
         <td class="pr-16">Verteidigung:</td>
-        <td>${currentPokemon["stats"][2]["base_stat"]}</td>
+        <td class="stat-value">${currentPokemon["stats"][2]["base_stat"]}</td>
+        <td class="stat-bar" style="width: ${
+          (currentPokemon["stats"][2]["base_stat"] / 120) * 200
+        }px;"></td>
       </tr>
       <tr>
         <td class="pr-16">Spezial Attacke:</td>
-        <td>${currentPokemon["stats"][3]["base_stat"]}</td>
+        <td class="stat-value">${currentPokemon["stats"][3]["base_stat"]}</td>
+        <td class="stat-bar" style="width: ${
+          (currentPokemon["stats"][3]["base_stat"] / 120) * 200
+        }px;"></td>
       </tr>
       <tr>
         <td class="pr-16">Spezial Verteidigung:</td>
-        <td>${currentPokemon["stats"][4]["base_stat"]}</td>
+        <td class="stat-value">${currentPokemon["stats"][4]["base_stat"]}</td>
+        <td class="stat-bar" style="width: ${
+          (currentPokemon["stats"][4]["base_stat"] / 120) * 200
+        }px;"></td>
       </tr>
       <tr>
         <td class="pr-16">Tempo:</td>
-        <td>${currentPokemon["stats"][1]["base_stat"]}</td>
+        <td class="stat-value">${currentPokemon["stats"][5]["base_stat"]}</td>
+        <td class="stat-bar" style="width: ${
+          (currentPokemon["stats"][5]["base_stat"] / 120) * 200
+        }px;"></td>
       </tr>
     </table>
     `;

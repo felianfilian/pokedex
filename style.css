@@ -207,14 +207,19 @@ body {
 }
 
 .stat-value {
-  display: flex;
+  /* display: flex;
   flex-direction: row;
 
-  width: 100%;
+  width: 100%; */
+
+  max-width: 30px;
 }
 
 .stat-bar {
-  height: 24px;
+  display: flex;
+  justify-content: flex-start;
+
+  height: 20px;
 
   margin-left: 10px;
 
