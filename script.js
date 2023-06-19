@@ -162,7 +162,7 @@ function showStatTab02() {
 // POKEDEX
 
 async function renderPokelist() {
-  for (let i = 1; i < 20; i++) {
+  for (let i = 1; i < 50; i++) {
     pokeData = await loadPokeAPI(i);
 
     let pokeName = pokeData["name"];
