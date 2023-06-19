@@ -2,6 +2,15 @@
 // loadPokeAPI(index) - get pokemon data froom API
 
 let currentPokemon;
+let germanStats = [
+  "HP",
+  "Attacke",
+  "Verteidigung",
+  "Spezial Attacke",
+  "Spezial-Verteidigung",
+  "Tempo",
+];
+let pokeLikes = [];
 
 // elements colors
 const elementColours = {
@@ -54,19 +63,28 @@ function closeOverlay() {
 
 // Heart Favi
 
-let heart = 0;
-
 function switchHeart() {
-  if (heart == 1) {
-    heart = 0;
+  let index = currentPokemon["game_indices"][3]["game_index"];
+  if (pokeLikes[index] == undefined || pokeLikes[index] == 1) {
+    pokeLikes[index] = 0;
+  } else {
+    pokeLikes[index] = 1;
+  }
+  showHeart();
+}
+
+function showHeart() {
+  let index = currentPokemon["game_indices"][3]["game_index"];
+  if (pokeLikes[index] == undefined || pokeLikes[index] == 1) {
     document.getElementById("poke-like").src = "./icon/heart.png";
   } else {
-    heart = 1;
     document.getElementById("poke-like").src = "./icon/heart-full.png";
   }
 }
 
 function renderPokemonInfo(mainElement) {
+  showHeart();
+
   document.getElementById("pokedex").style.backgroundColor =
     changeBGColor(mainElement);
   document.querySelector(
@@ -96,84 +114,49 @@ function capitalize(string) {
 
 function changeStatTab(index) {
   let content = "Page not found";
-
   if (index == 0) {
-    content = `
-    <table class="stat-list">
-      <tr>
-        <td class="pr-16">Gewicht</td>
-        <td>${currentPokemon["weight"] / 10} kg</td>
-      </tr>
-      <tr>
-        <td class="pr-16">Größe</td>
-        <td>${currentPokemon["height"] / 10} m</td>
-      </tr>
-    </table>
-    `;
+    content = showStatTab01();
   }
   if (index == 1) {
-    content = `
-    <table class="stat-list">
-       <tr class="stat-element">
-        <td class="pr-16">HP:</td>
-        <td class="stat-value">${currentPokemon["stats"][0]["base_stat"]}</td>
-        <td class="stat-bar" style="width: ${
-          (currentPokemon["stats"][0]["base_stat"] / 120) * 200
-        }px;"></td>
-      </tr>
-      <tr>
-        <td class="pr-16">Attacke:</td>
-        <td class="stat-value">${currentPokemon["stats"][1]["base_stat"]}</td>
-        <td class="stat-bar" style="width: ${
-          (currentPokemon["stats"][1]["base_stat"] / 120) * 200
-        }px;"></td>
-      </tr>
-      <tr>
-        <td class="pr-16">Verteidigung:</td>
-        <td class="stat-value">${currentPokemon["stats"][2]["base_stat"]}</td>
-        <td class="stat-bar" style="width: ${
-          (currentPokemon["stats"][2]["base_stat"] / 120) * 200
-        }px;"></td>
-      </tr>
-      <tr>
-        <td class="pr-16">Spezial Attacke:</td>
-        <td class="stat-value">${currentPokemon["stats"][3]["base_stat"]}</td>
-        <td class="stat-bar" style="width: ${
-          (currentPokemon["stats"][3]["base_stat"] / 120) * 200
-        }px;"></td>
-      </tr>
-      <tr>
-        <td class="pr-16">Spezial Verteidigung:</td>
-        <td class="stat-value">${currentPokemon["stats"][4]["base_stat"]}</td>
-        <td class="stat-bar" style="width: ${
-          (currentPokemon["stats"][4]["base_stat"] / 120) * 200
-        }px;"></td>
-      </tr>
-      <tr>
-        <td class="pr-16">Tempo:</td>
-        <td class="stat-value">${currentPokemon["stats"][5]["base_stat"]}</td>
-        <td class="stat-bar" style="width: ${
-          (currentPokemon["stats"][5]["base_stat"] / 120) * 200
-        }px;"></td>
-      </tr>
-    </table>
-    `;
-  }
-  if (index == 2) {
-    content = `
-    <ul class="stat-list">
-      <li class="stat-element">Evolution 1: Undef</li> 
-    </ul>
-    `;
-  }
-  if (index == 3) {
-    content = `
-    <ul class="stat-list">
-      <li class="stat-element">Moves: Fireball</li>
-    </ul>
-    `;
+    content = showStatTab02();
   }
   document.getElementById("stats-content").innerHTML = content;
+}
+
+function showStatTab01() {
+  console.log("YES");
+  return `
+  <table class="stat-list">
+    <tr>
+      <td class="pr-16">Gewicht</td>
+      <td>${currentPokemon["weight"] / 10} kg</td>
+    </tr>
+    <tr>
+      <td class="pr-16">Größe</td>
+      <td>${currentPokemon["height"] / 10} m</td>
+    </tr>
+  </table>
+  `;
+}
+
+function showStatTab02() {
+  let content = `<table class="stat-list">`;
+  for (let i = 0; i < currentPokemon["stats"].length; i++) {
+    content += `
+       <tr class="stat-element">
+        <td class="pr-16">${
+          germanStats[i]
+          // capitalize(currentPokemon["stats"][i]["stat"]["name"])
+        }:</td>
+        <td class="stat-value">${currentPokemon["stats"][i]["base_stat"]}</td>
+        <td class="stat-bar" style="width: ${
+          (currentPokemon["stats"][i]["base_stat"] / 120) * 200
+        }px;"></td>
+      </tr>
+      `;
+  }
+  content += "</table>";
+  return content;
 }
 
 // POKEDEX
