@@ -52,6 +52,10 @@ async function loadPokeAPI(index) {
   return response.json();
 }
 
+function loadOnScroll() {
+  renderPokelist(200);
+}
+
 // Poke Card
 
 function openOverlay() {
