@@ -11,6 +11,7 @@ let germanStats = [
   "Tempo",
 ];
 let pokeLikes = [];
+let pokeListCount = 100;
 
 // elements colors
 const elementColours = {
@@ -36,7 +37,7 @@ const elementColours = {
 
 function loadPokemon() {
   loadPokedex(1, "grass");
-  renderPokelist();
+  renderPokelist(pokeListCount);
 }
 
 async function loadPokedex(index, mainElement) {
@@ -124,7 +125,6 @@ function changeStatTab(index) {
 }
 
 function showStatTab01() {
-  console.log("YES");
   return `
   <table class="stat-list">
     <tr>
@@ -161,8 +161,8 @@ function showStatTab02() {
 
 // POKEDEX
 
-async function renderPokelist() {
-  for (let i = 1; i < 50; i++) {
+async function renderPokelist(count) {
+  for (let i = 1; i < count; i++) {
     pokeData = await loadPokeAPI(i);
 
     let pokeName = pokeData["name"];
