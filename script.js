@@ -11,7 +11,7 @@ let germanStats = [
   "Tempo",
 ];
 let pokeLikes = [];
-let pokeListCount = 100;
+let pokeListCount = 6;
 
 // elements colors
 const elementColours = {
@@ -166,7 +166,7 @@ function showStatTab02() {
 // POKEDEX
 
 async function renderPokelist(count) {
-  for (let i = 1; i < count; i++) {
+  for (let i = 1; i <= count; i++) {
     pokeData = await loadPokeAPI(i);
 
     let pokeName = pokeData["name"];

@@ -23,6 +23,17 @@ body {
   display: none;
 }
 
+.btn-01 {
+  padding: 10px 20px;
+
+  background-color: #007bff;
+  border: 2px solid #fff;
+  border-radius: 12px;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+}
+
 /* fonts */
 
 /* ubuntu-regular - latin */
