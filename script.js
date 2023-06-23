@@ -37,7 +37,7 @@ const elementColours = {
 
 function loadPokemon() {
   loadPokedex(1, "grass");
-  renderPokelist(pokeListCount);
+  renderPokelist(1, pokeListCount);
 }
 
 async function loadPokedex(index, mainElement) {
@@ -53,7 +53,9 @@ async function loadPokeAPI(index) {
 }
 
 function loadOnScroll() {
-  renderPokelist(200);
+  let oldCount = pokeListCount + 1;
+  pokeListCount += 6;
+  renderPokelist(oldCount, pokeListCount);
 }
 
 // Poke Card
@@ -165,8 +167,8 @@ function showStatTab02() {
 
 // POKEDEX
 
-async function renderPokelist(count) {
-  for (let i = 1; i <= count; i++) {
+async function renderPokelist(start, count) {
+  for (let i = start; i <= count; i++) {
     pokeData = await loadPokeAPI(i);
 
     let pokeName = pokeData["name"];
