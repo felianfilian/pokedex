@@ -4,6 +4,8 @@ body {
   justify-content: center;
   align-items: center;
 
+  padding-bottom: 48px;
+
   background-image: url("img/poke-bg01.jpg");
   background-attachment: fixed;
   background-size: cover;

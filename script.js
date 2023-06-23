@@ -11,7 +11,7 @@ let germanStats = [
   "Tempo",
 ];
 let pokeLikes = [];
-let pokeListCount = 6;
+let pokeListCount = 9;
 
 // elements colors
 const elementColours = {
@@ -54,7 +54,7 @@ async function loadPokeAPI(index) {
 
 function loadOnScroll() {
   let oldCount = pokeListCount + 1;
-  pokeListCount += 6;
+  pokeListCount += 9;
   renderPokelist(oldCount, pokeListCount);
 }
 
